@@ -7,7 +7,7 @@ const main = async () => {
 
   const codeCoverage = execSync(core.getInput("test-command") || "npx jest").toString();
   const regex = /.*(File.* \|)/gs;
-  const content = regex.exec(codeCoverage)[1];
+  const content = '\n'+regex.exec(codeCoverage)[1];
   let coveragePercentage = execSync(
     "npx coverage-percentage ./coverage/lcov.info --lcov"
   ).toString();
